@@ -1,0 +1,101 @@
+<!DOCTYPEhtml PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<htmlxmlns="http://www.w3.org/1999/xhtml" >
+
+<head>
+
+<metahttp-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+<script>
+    /*
+    https://blog.csdn.net/zjhsucceed_329/article/details/17552801    
+    */
+    var itemId = 0;
+
+    function getVLC(name) {
+
+        if (window.document[name]) {
+
+            returnwindow.document[name];
+
+        }
+
+        if (navigator.appName.indexOf("Microsoft Internet") == -1) {
+
+            if (document.embeds && document.embeds[name])
+
+                return document.embeds[name];
+
+        }
+
+        else {
+
+            returndocument.getElementById(name);
+
+        }
+
+    }
+
+
+
+    function doAddPlaylist() {
+
+        var vlc = getVLC("vlc");
+
+        itemId = vlc.playlist.add("rtsp://192.168.56.1/test.264");
+
+        document.getElementById("btn_stop").disabled = false;
+
+    }
+
+</script>
+
+</head>
+
+<bodyonload="doAddPlaylist()">
+
+         <div>
+
+                            <objectclassid="clsid:9be31822-fdad-461b-ad51-be1d1c159921"
+
+                                               width="352"
+
+                                               height="288"
+
+                                               id="vlc"
+
+                                               events="true">
+
+                            <paramname="mrl" value="rtsp://192.168.230.141/test.264" />
+
+                            <paramname="showdisplay" value="true" />
+
+                            <paramname="autoloop" value="false" />
+
+                            <paramname="autoplay" value="false" />
+
+                            <paramname="volume" value="50" />
+
+                            <paramname="starttime" value="0" />
+
+                            <embedpluginspage="http://www.videolan.org"
+
+                                                         type="application/x-vlc-plugin"
+
+                                                         version="videolan.vlcplugin.2"
+
+                                                         width="352"
+
+                                                         height="288"
+
+                                                         name="vlc">
+
+                            </embed>
+
+                            </object>
+
+         </div>
+
+</body>
+
+</html> 
